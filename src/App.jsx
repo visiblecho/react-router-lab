@@ -8,7 +8,15 @@ import MailboxDetails from './components/MailboxDetails/MailboxDetails.jsx'
 const App = () => {
   const [mailboxes, setMailboxes] = useState([])
 
-  const addMailbox = (config) => {}
+  const addMailbox = (config) => {
+    const newMailboxes = [...mailboxes, 
+      {
+        ...config,
+        _id: mailboxes.length + 1
+      }
+    ]
+    setMailboxes(newMailboxes)
+  }
 
   return (
     <>
@@ -16,7 +24,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<main><h1>Post Office</h1></main>} />
         <Route path='/mailboxes' element={<MailboxList />} />
-        <Route path='/new-mailbox' element={<MailboxForm />} />
+        <Route path='/new-mailbox' element={<MailboxForm addMailbox={addMailbox} />} />
         <Route path='/mailboxes/:id' element={<MailboxDetails />} />
       </Routes>
     </>
