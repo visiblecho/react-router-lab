@@ -1,6 +1,9 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
 
 const MailboxForm = (props) => {
+
+    const navigate = useNavigate()
 
     const [owner, setOwner] = useState('')
     const [size, setSize] = useState('Medium')
@@ -11,6 +14,7 @@ const MailboxForm = (props) => {
             boxSize: size,
             boxOwner: owner
         })
+        navigate('/mailboxes')
     }
 
     return (
